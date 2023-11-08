@@ -8,7 +8,7 @@ public class Sketch extends PApplet {
    */
   public void settings() {
 	// put your size call here
-    size(800, 800);
+    size(1000, 1000);
   }
 
   /** 
@@ -17,49 +17,75 @@ public class Sketch extends PApplet {
    */
   public void setup() {
     background(210, 255, 173);
+    background(210, 255, 173);
   }
 
-  /**
-   * Called repeatedly, anything drawn to the screen goes here
-   */
+  //Colours were chosen by ChatGPT & Kayden who no longer goes to St.Augustine
   public void draw() {
-    drawHouse(25, 290, 255,255,255);
-    drawHouse(40, 290, 255, 255,255);
+    drawHouse(35, 100, 255, 0, 0);
+    drawHouse(235, 100, 0, 128, 255);
+    drawHouse(435, 100, 51, 204, 102);
+    drawHouse(635, 100, 255, 153, 0);
+    drawHouse(835, 100, 102, 0, 255);
+    drawRoad(0, 225);
+    drawHouse(35, 290, 204, 51, 255);
+    drawHouse(235, 290, 255, 102, 0);
+    drawHouse(435, 290, 204, 204, 0);
+    drawHouse(635, 290, 0, 255, 0);
+    drawHouse(835, 290, 255, 51, 204);
+    drawRoad(0, 400);
+    drawHouse(35, 480, 0, 51, 153);
+    drawHouse(235, 480, 153, 102, 204);
+    drawHouse(435, 480, 255, 51, 204);
+    drawHouse(635, 480, 51, 255, 153);
+    drawHouse(835, 480, 128, 64, 192);
+    drawRoad(0, 600);
   }
   
   /**
    * 
    * @param x1 Base top left corner x-coordinate
    * @param y1 Base top left corner x-coordinate
-   * @param red Percentage of red color for fill
-   * @param green Percentage of green color for fill
-   * @param blue Percentage of blue color for fill
+   * @param red Percentage of red color for Base
+   * @param green Percentage of green color for Base
+   * @param blue Percentage of blue color for Base
    */
   public void drawHouse(int x1, int y1, int red, int green, int blue) {
 
     // Base
     stroke(0, 0, 0);
-    fill(240, 250, 190);
+    fill(red, green, blue);
     rect(x1, y1, 120, 100);
 
     // Roof
-    stroke(red, green, blue);
+    stroke(0, 0, 00);
     fill(210, 100, 75);
-    triangle(0, 290, 170, 290, 85, 215);
+    triangle(x1 - 25, y1, x1 + 145, y1, x1 + 60, y1 - 75);
   
     // Window
     stroke(255, 255, 255);
     fill(140, 220, 240);
-    rect(50, 325, 30, 30);
-    line(65, 325, 65, 355);
-    line(50, 340, 80, 340);
+    rect(x1 + 25, y1 + 35, 30, 30);
+    line(x1 + 40, y1 + 35, x1 + 40, y1 + 65);
+    line(x1 + 25, y1 + 50, x1 + 55, y1 + 50);
   
     // Door
     stroke(0, 0, 0);
     fill(170, 105, 50);
-    rect(97, 340, 25, 50);
+    rect(x1 + 72, y1 + 50, 25, 50);
     stroke(255, 140, 105);
     fill(255, 140, 105);
-    ellipse(115, 365, 3, 3);
+    ellipse(x1 + 90, y1 + 75, 3, 3);
+  }
+
+  public void drawRoad (int x1, int y1) {
+    stroke(255,255,255);
+    fill(83, 86, 91);
+    rect(x1, y1, 1000, 75);
+    noStroke();
+    fill(247, 181, 0);
+    for (int count = 25; count < 1000; count+= 75) {
+      rect(x1 + count, y1 + 32, 30, 10);
+    }
   }
 }
