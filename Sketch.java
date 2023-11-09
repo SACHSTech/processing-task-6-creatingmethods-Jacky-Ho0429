@@ -37,9 +37,9 @@ public class Sketch extends PApplet {
     drawHouse(835, 480, 128, 64, 192);
     drawRoad(0, 600 ,255);
     
-    // Draws a circle of the color on the pixel that is 10 pixels to the right of the mouse
-    int color10RMouse = readColor();
-    fill(color10RMouse);
+    // Draws a circle of the color on the pixel that is the parameter pixels to the right of the mouse
+    int colorMouseParam = readColor(25);
+    fill(colorMouseParam);
     stroke(0, 0, 0);
     if (mousePressed) {
       ellipse(mouseX, mouseY, 10, 10);
@@ -103,14 +103,14 @@ public class Sketch extends PApplet {
   }
 
   /**
-   * Checks if Mouse Down
-   * @param MouseDown Boolean to see if mouse down is true
-   * @return Returns if MouseDown is true or false
+   * Checks the color of the pixel that is the param number to the right
+   * @param the number of pixels to the right of the mouse
+   * @return the color of mouse 10 pixels to the right if mouse is down else return a transparent color
    */
-  public int readColor() {
+  public int readColor(int Pixels) {
     if (mousePressed) {
       // Get the color under the mouse
-      return get(mouseX + 10, mouseY);
+      return get(mouseX + Pixels, mouseY);
     } else {
       // Return a default color if the mouse is not pressed
       return color(0, 0, 0, 0);
