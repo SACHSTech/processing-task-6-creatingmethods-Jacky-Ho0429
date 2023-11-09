@@ -40,6 +40,7 @@ public class Sketch extends PApplet {
     drawHouse(635, 480, 51, 255, 153);
     drawHouse(835, 480, 128, 64, 192);
     drawRoad(0, 600);
+    
   }
   
   /**
@@ -56,6 +57,7 @@ public class Sketch extends PApplet {
     stroke(0, 0, 0);
     fill(red, green, blue);
     rect(x1, y1, 120, 100);
+    coordinate(x1, y1);
 
     // Roof
     stroke(0, 0, 00);
@@ -87,5 +89,12 @@ public class Sketch extends PApplet {
     for (int count = 25; count < 1000; count+= 75) {
       rect(x1 + count, y1 + 32, 30, 10);
     }
+  }
+
+  public String coordinate(int x, int y) {
+    int xValue = x;
+    int yValue = y;
+    String coordinate = (xValue + ", " + yValue);
+    return coordinate;
   }
 }
