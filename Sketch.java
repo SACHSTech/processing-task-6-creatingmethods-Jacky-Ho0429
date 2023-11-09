@@ -27,19 +27,19 @@ public class Sketch extends PApplet {
     drawHouse(435, 100, 51, 204, 102);
     drawHouse(635, 100, 255, 153, 0);
     drawHouse(835, 100, 102, 0, 255);
-    drawRoad(0, 225);
+    drawRoad(0, 225, 255);
     drawHouse(35, 290, 204, 51, 255);
     drawHouse(235, 290, 255, 102, 0);
     drawHouse(435, 290, 204, 204, 0);
     drawHouse(635, 290, 0, 255, 0);
     drawHouse(835, 290, 255, 51, 204);
-    drawRoad(0, 400);
+    drawRoad(0, 400, 255);
     drawHouse(35, 480, 0, 51, 153);
     drawHouse(235, 480, 153, 102, 204);
     drawHouse(435, 480, 255, 51, 204);
     drawHouse(635, 480, 51, 255, 153);
     drawHouse(835, 480, 128, 64, 192);
-    drawRoad(0, 600);
+    drawRoad(0, 600 ,255);
     
   }
   
@@ -57,7 +57,6 @@ public class Sketch extends PApplet {
     stroke(0, 0, 0);
     fill(red, green, blue);
     rect(x1, y1, 120, 100);
-    coordinate(x1, y1);
 
     // Roof
     stroke(0, 0, 00);
@@ -80,21 +79,14 @@ public class Sketch extends PApplet {
     ellipse(x1 + 90, y1 + 75, 3, 3);
   }
 
-  public void drawRoad (int x1, int y1) {
+  public void drawRoad (int x1, int y1, int color) {
     stroke(255,255,255);
     fill(83, 86, 91);
     rect(x1, y1, 1000, 75);
     noStroke();
-    fill(247, 181, 0);
+    fill(color, color, color);
     for (int count = 25; count < 1000; count+= 75) {
       rect(x1 + count, y1 + 32, 30, 10);
     }
-  }
-
-  public String coordinate(int x, int y) {
-    int xValue = x;
-    int yValue = y;
-    String coordinate = (xValue + ", " + yValue);
-    return coordinate;
   }
 }
