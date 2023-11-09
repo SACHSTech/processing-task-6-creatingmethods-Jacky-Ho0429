@@ -2,26 +2,22 @@ import processing.core.PApplet;
 
 public class Sketch extends PApplet {
 	
-	
-  /**
-   * Called once at the beginning of execution, put your size all in this method
-   */
   public void settings() {
-	// put your size call here
     size(1000, 1000);
   }
 
-  /** 
-   * Called once at the beginning of execution.  Add initial set up
-   * values here i.e background, stroke, fill etc.
-   */
   public void setup() {
-    background(210, 255, 173);
-    background(210, 255, 173);
+   background(210, 255, 173);
   }
 
-  //Colours were chosen by ChatGPT & Kayden who no longer goes to St.Augustine
+  // Colours of houses were chosen by ChatGPT & Kayden who no longer goes to St.Augustine
   public void draw() {
+
+    // Rectangle used to make color picker clean
+    fill(210, 255, 173);
+    noStroke();
+    rect(0,0,1000,1000);
+
     drawHouse(35, 100, 255, 0, 0);
     drawHouse(235, 100, 0, 128, 255);
     drawHouse(435, 100, 51, 204, 102);
@@ -41,10 +37,17 @@ public class Sketch extends PApplet {
     drawHouse(835, 480, 128, 64, 192);
     drawRoad(0, 600 ,255);
     
+    // Draws a circle of the color on the pixel that is 10 pixels to the right of the mouse
+    int color10RMouse = readColor();
+    fill(color10RMouse);
+    stroke(0, 0, 0);
+    if (mousePressed) {
+      ellipse(mouseX, mouseY, 10, 10);
+    }
   }
   
   /**
-   * 
+   * Draws a house
    * @param x1 Base top left corner x-coordinate
    * @param y1 Base top left corner x-coordinate
    * @param red Percentage of red color for Base
@@ -79,14 +82,38 @@ public class Sketch extends PApplet {
     ellipse(x1 + 90, y1 + 75, 3, 3);
   }
 
+  /**
+   * Draws a road
+   * @param x1 Top left corner x-coordinate of road
+   * @param y1 Top left corner y-coordinate of road
+   * @param color The color of the stripes on the road
+   */
   public void drawRoad (int x1, int y1, int color) {
+    // Draws the road
     stroke(255,255,255);
     fill(83, 86, 91);
     rect(x1, y1, 1000, 75);
+    
+    // Draws the dotted lines in the center of road
     noStroke();
     fill(color, color, color);
     for (int count = 25; count < 1000; count+= 75) {
       rect(x1 + count, y1 + 32, 30, 10);
     }
+  }
+
+  /**
+   * Checks if Mouse Down
+   * @param MouseDown Boolean to see if mouse down is true
+   * @return Returns if MouseDown is true or false
+   */
+  public int readColor() {
+    if (mousePressed) {
+      // Get the color under the mouse
+      return get(mouseX + 10, mouseY);
+    } else {
+      // Return a default color if the mouse is not pressed
+      return color(0, 0, 0, 0);
+    } 
   }
 }
